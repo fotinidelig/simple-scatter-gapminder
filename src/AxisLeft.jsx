@@ -33,9 +33,9 @@ export const AxisLeft = ({ yScale, pixelsPerTick, innerWidth, label }) => {
       <g transform={`translate(0, ${range[0]}) rotate(-90)`}>
         <text
           style={{
-            fontSize: "13px",
+            fontSize: "14px",
             textAnchor: "",
-            transform: "translateY(-30px)",
+            transform: "translateY(-35px)",
           }}
           fill='white'
         >

@@ -30,9 +30,9 @@ export const AxisBottom = ({ xScale, pixelsPerTick, innerHeight, label }) => {
       <g transform={`translate(${range[1]}, 0)`}>
         <text
           style={{
-            fontSize: "13px",
+            fontSize: "14px",
             textAnchor: "end",
-            transform: "translateY(35px)",
+            transform: "translateY(40px)",
           }}
           fill='white'
         >

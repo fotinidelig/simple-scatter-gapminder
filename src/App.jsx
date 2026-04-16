@@ -120,9 +120,9 @@ export default function App() {
       <svg id='scatter-plot' width={width} height={height} >
         <g transform={`translate(${margin.left}, ${margin.top})`} overflow={'visible'}>
           <g transform={`translate(0, ${innerHeight})`} overflow={'visible'}>
-            <AxisBottom xScale={xScale} pixelsPerTick={pixelsPerTick.x} innerHeight={innerHeight} label="GDP per capita" />
+            <AxisBottom xScale={xScale} pixelsPerTick={pixelsPerTick.x} innerHeight={innerHeight} label="GDP per capita (USD)" />
           </g>
-          <AxisLeft yScale={yScale} pixelsPerTick={pixelsPerTick.y} innerWidth={innerWidth} label="Life expectancy"/>
+          <AxisLeft yScale={yScale} pixelsPerTick={pixelsPerTick.y} innerWidth={innerWidth} label="Life expectancy (years)"/>
           <g overflow={'visible'}>
             {plottedData.map((d) => (
               <ScatterBubble 

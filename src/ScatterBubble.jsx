@@ -15,8 +15,8 @@ export default function ScatterBubble({ color, size, x, y, country, continent })
             cy={y}
             r={size}
             fill={color}
-            stroke={color}
-            strokeWidth={1.5}
+            stroke={'white'}
+            strokeWidth={1}
             fillOpacity={hover ? 1 : 0.6}
         >
           <title>{continent ? `${continent}`: `${country}`}</title>
