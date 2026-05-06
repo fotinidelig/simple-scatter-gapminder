@@ -1,17 +1,8 @@
 import { useMemo, useState } from 'react';
 import * as d3 from 'd3';
 import { data } from './data';
-import ScatterBubble from './ScatterBubble';
-import { AxisBottom } from './AxisBottom';
-import { AxisLeft } from './AxisLeft';
-import { Legend } from './Legend';
+import { ResponsiveChart } from './Chart';
 import './App.css';
-
-const width = 700;
-const height = 500;
-const margin = { top: 20, right: 30, bottom: 50, left: 50 };
-const innerWidth = width - margin.left - margin.right;
-const innerHeight = height - margin.top - margin.bottom;
 
 const continents = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'Aggregates'];
 const continentColors = {
@@ -39,26 +30,6 @@ const dataPerContinent = [
   getContinentAgregates(data, 'Oceania'),
   getContinentAgregates(data, 'Africa'),
 ]
-
-const xScale = d3
-  .scaleLinear()
-  .domain([0, d3.max(data, (d) => d.gdpPercap)])
-  .range([0, innerWidth]);
-const yScale = d3
-  .scaleLinear()
-  .domain([35, d3.max(data, (d) => d.lifeExp)])
-  .range([innerHeight, 0]);
-const colorScale = d3.scaleOrdinal().domain(continents).range(continents.map((c) => continentColors[c]));
-
-const radiusScale = d3
-  .scaleSqrt()
-  .domain(d3.extent(data, (d) => d.pop))
-  .range([5, 30]);
-
-const pixelsPerTick = {
-  x: '50',
-  y: '50',
-};
 
 export default function App() {
   const [selectedContinents, setSelectedContinents] = useState(() => new Set(continents));
@@ -117,7 +88,8 @@ export default function App() {
           })}
         </div>
       </div>
-      <svg id='scatter-plot' width={width} height={height} >
+        <ResponsiveChart data={plottedData} meanData={meanData} continents={continents} continentColors={continentColors} />
+      {/* <svg id='scatter-plot' width={width} height={height} >
         <g transform={`translate(${margin.left}, ${margin.top})`} overflow={'visible'}>
           <g transform={`translate(0, ${innerHeight})`} overflow={'visible'}>
             <AxisBottom xScale={xScale} pixelsPerTick={pixelsPerTick.x} innerHeight={innerHeight} label="GDP per capita (USD)" />
@@ -140,7 +112,7 @@ export default function App() {
             <Legend sizeScale={radiusScale} width={85} height={70} />
           </g>
         </g>
-      </svg>
+      </svg> */}
     </div>
   );
 }
